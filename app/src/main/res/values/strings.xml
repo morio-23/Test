@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="make">時間割を作る</string>
+    <string name="view">時間割を見る</string>
+    <string-array name="day_list">
+        <item>月</item>
+        <item>火</item>
+        <item>水</item>
+        <item>木</item>
+        <item>金</item>
+    </string-array>
+    <string-array name="time_list">
+        <item>１限</item>
+        <item>２限</item>
+        <item>３限</item>
+        <item>４限</item>
+        <item>５限</item>
+        <item>６限</item>
+        <item>７限</item>
+    </string-array>
+</resources>
