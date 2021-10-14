@@ -2,7 +2,15 @@
     <string name="app_name">Test</string>
     <string name="make">時間割を作る</string>
     <string name="view">時間割を見る</string>
+
+    /*時間割登録フォーム*/
+    <string name="formname_subjectcode">時間割コード</string>
+    <string name="formname_subjectnema">科目名</string>
+    <string name="formname_teacher">教員名</string>
+    <string name="formname_date">曜日・時間</string>
+    <string name="formname_room">教室</string>
     <string-array name="day_list">
+        <item>曜日</item>>
         <item>月</item>
         <item>火</item>
         <item>水</item>
@@ -10,6 +18,7 @@
         <item>金</item>
     </string-array>
     <string-array name="time_list">
+        <item>時限</item>
         <item>１限</item>
         <item>２限</item>
         <item>３限</item>
