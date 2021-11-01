@@ -1,5 +1,6 @@
 package com.dryad.test
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,10 @@ class data_input : AppCompatActivity() {
     override fun onDestroy() {
         databaseClose()
         super.onDestroy()
+    }
+
+    fun TourokuButtonTapped(view: View){
+        insertData()
     }
 
     private fun insertData(){
