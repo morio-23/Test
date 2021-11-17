@@ -2,6 +2,7 @@
     <string name="app_name">Test</string>
     <string name="make">時間割を作る</string>
     <string name="view">時間割を見る</string>
+    <string name="picture">画像</string>>
 
     /*時間割登録フォーム*/
     <string name="formname_subjectcode">時間割コード</string>

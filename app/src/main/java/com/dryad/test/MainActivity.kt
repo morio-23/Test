@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 
+@Suppress("FunctionName")
 class MainActivity : AppCompatActivity() {
 
     val EXTRA_MESSAGE: String ="com.dryad.test.MESSAGE"
