@@ -25,6 +25,11 @@ class SampDatabaseHelper  // コンストラクタは必ず必要
                     DBTimetable.COLUMN_NAME_CLASSCODE + " INTEGER default ''," +
                     DBTimetable.COLUMN_NAME_ROOM + " TEXT default '', " +
                     DBTimetable.COLUMN_NAME_TEACHER + " TEXT default '', " +
+                    DBTimetable.COLUMN_NAME_CLASS + " TEXT default '', " +
+                    DBTimetable.COLUMN_NAME_SYLLABUSID + " INTEGER default '', " +
+                    DBTimetable.COLUMN_NAME_CLASSCODE + " INTEGER default ''," +
+                    DBTimetable.COLUMN_NAME_ROOM + " TEXT default '', " +
+                    DBTimetable.COLUMN_NAME_TEACHER + " TEXT default '', " +
                     ") "
         )
 

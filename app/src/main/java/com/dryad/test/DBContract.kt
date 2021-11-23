@@ -20,6 +20,23 @@ private constructor() {
         const val C_classregicode = "classregicode"
         const val C_grade = "grade"
         const val C_classnumcode = "classnumcode"
+        const val C_credit = "credit"
+        const val C_latestupdate = "latestupdate"
+        const val C_officehours = "officehours"
+        const val C_rtadvice = "rtadvice"
+        const val C_objective = "objective"
+        const val C_edugoals = "edugoals"
+        const val C_goals = "goals"
+        const val C_schedule = "schedule"
+        const val C_studyoutside = "studyoutside"
+        const val C_keywords = "keywords"
+        const val C_notice = "notice"
+        const val C_evaluation = "evaluation"
+        const val C_textbooks = "textbooks"
+        const val C_related = "related"
+        const val C_link = "link"
+        const val C_notes = "notes"
+
     }
 
     object DBTimetable : BaseColumns {
