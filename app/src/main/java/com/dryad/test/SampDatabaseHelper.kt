@@ -3,34 +3,50 @@ package com.dryad.test
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.dryad.test.DBContract.DBTimetable
+//import com.dryad.test.DBContract.DBTimetable
+import com.dryad.test.DBContract.DBSyllabus
 
 
 //参考：https://www.ma-chanblog.com/2021/01/android-db-text.html
 
 // データベースをアプリから使用するために、 SQLiteOpenHelperを継承する
 // SQLiteOpenHelperは、データベースやテーブルが存在する場合はそれを開き、存在しない場合は作成してくれる
-class SampDatabaseHelper  // コンストラクタは必ず必要
-    (context: Context?) :
-    SQLiteOpenHelper(context, DBNAME, null, VERSION) {
+public class SampDatabaseHelper
+    (context: Context, DBNAME:String, factory: SQLiteDatabase.CursorFactory?, VERSION: Int) :
+    SQLiteOpenHelper(context, DBNAME, factory, VERSION) {
     // データベース作成時にテーブルを作成
     override fun onCreate(db: SQLiteDatabase) {
 
-        // テーブルを作成
         db.execSQL(
-            "CREATE TABLE " + DBTimetable.TABLE_NAME +
+            "CREATE TABLE " + DBSyllabus.TABLE_NAME +
                     " ( _id INTEGER PRIMARY KEY, " +
-                    DBTimetable.COLUMN_NAME_CLASS + " TEXT default '', " +
-                    DBTimetable.COLUMN_NAME_SYLLABUSID + " INTEGER default '', " +
-                    DBTimetable.COLUMN_NAME_CLASSCODE + " INTEGER default ''," +
-                    DBTimetable.COLUMN_NAME_ROOM + " TEXT default '', " +
-                    DBTimetable.COLUMN_NAME_TEACHER + " TEXT default '', " +
-                    DBTimetable.COLUMN_NAME_CLASS + " TEXT default '', " +
-                    DBTimetable.COLUMN_NAME_SYLLABUSID + " INTEGER default '', " +
-                    DBTimetable.COLUMN_NAME_CLASSCODE + " INTEGER default ''," +
-                    DBTimetable.COLUMN_NAME_ROOM + " TEXT default '', " +
-                    DBTimetable.COLUMN_NAME_TEACHER + " TEXT default '', " +
-                    ") "
+                    DBSyllabus.TABLE_NAME + " TEXT default '', " +
+                    DBSyllabus.C_classname + " TEXT default '', " +
+                    DBSyllabus.C_teacher + " TEXT default '', " +
+                    DBSyllabus.C_classcategory + " TEXT default '', " +
+                    DBSyllabus.C_classtype + " TEXT default '', " +
+                    DBSyllabus.C_coc + " TEXT default '', " +
+                    DBSyllabus.C_period + " TEXT default '', " +
+                    DBSyllabus.C_faculty + " TEXT default '', " +
+                    DBSyllabus.C_classregicode + " TEXT default '', " +
+                    DBSyllabus.C_grade + " TEXT default '', " +
+                    DBSyllabus.C_classnumcode + " TEXT default '', " +
+                    DBSyllabus.C_credit + " TEXT default '', " +
+                    DBSyllabus.C_latestupdate + " TEXT default '', " +
+                    DBSyllabus.C_officehours + " TEXT default '', " +
+                    DBSyllabus.C_rtadvice + " TEXT default '', " +
+                    DBSyllabus.C_objective + " TEXT default '', " +
+                    DBSyllabus.C_edugoals + " TEXT default '', " +
+                    DBSyllabus.C_goals + " TEXT default '', " +
+                    DBSyllabus.C_schedule + " TEXT default '', " +
+                    DBSyllabus.C_studyoutside + " TEXT default '', " +
+                    DBSyllabus.C_keywords + " TEXT default '', " +
+                    DBSyllabus.C_notice + " TEXT default '', " +
+                    DBSyllabus.C_evaluation + " TEXT default '', " +
+                    DBSyllabus.C_textbooks + " TEXT default '', " +
+                    DBSyllabus.C_related + " TEXT default '', " +
+                    DBSyllabus.C_link + " TEXT default '', " +
+                    DBSyllabus.C_notes + " TEXT default '', )"
         )
 
         // トリガーを作成
@@ -43,17 +59,9 @@ class SampDatabaseHelper  // コンストラクタは必ず必要
     }
 
     // データベースをバージョンアップした時、テーブルを削除してから再作成
-    override fun onUpgrade(db: SQLiteDatabase, i: Int, i1: Int) {
-        db.execSQL("DROP TABLE IF EXISTS " + DBTimetable.TABLE_NAME)
+    override fun onUpgrade(db: SQLiteDatabase, oldV: Int, newV: Int) {
+        db.execSQL("DROP TABLE IF EXISTS " + DBSyllabus.TABLE_NAME)
         onCreate(db)
     }
 
-    companion object {
-        // データベースのバージョン
-        // テーブルの内容などを変更したら、この数字を変更する
-        private const val VERSION = 2
-
-        // データベース名
-        private const val DBNAME = "samp.db"
-    }
 }

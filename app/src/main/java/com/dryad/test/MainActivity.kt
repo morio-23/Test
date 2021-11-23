@@ -23,5 +23,10 @@ class MainActivity : AppCompatActivity() {
         startActivities(arrayOf(intent))
     }
 
+    fun ButtonViewList(view: View){
+        val intent = Intent(this, test::class.java)
+        startActivities(arrayOf(intent))
+    }
+
 
 }

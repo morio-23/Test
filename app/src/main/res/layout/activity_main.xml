@@ -44,5 +44,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_test"
         tools:ignore="ImageContrastCheck,ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="200dp"
+        android:onClick="ButtonViewList"
+        android:text="@string/list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

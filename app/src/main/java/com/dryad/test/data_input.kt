@@ -19,7 +19,7 @@ class data_input : AppCompatActivity() {
         setContentView(R.layout.activity_data_input)
     }
 
-    private  val _helper = SampDatabaseHelper(applicationContext)
+    /*private  val _helper = SampDatabaseHelper(applicationContext,"Syllabus",null,1)
 
     fun databaseClose(){
         _helper.close()
@@ -28,7 +28,7 @@ class data_input : AppCompatActivity() {
     override fun onDestroy() {
         databaseClose()
         super.onDestroy()
-    }
+    }*/
 
     fun TourokuButtonTapped(view: View){
         insertData()
