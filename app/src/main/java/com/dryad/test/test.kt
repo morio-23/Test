@@ -20,7 +20,7 @@ class test : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
         val listView: ListView = findViewById(R.id.listView)
-        val assetManager = resources.assets
+
         //val progressBar = ProgressBar(this)
     }
 
@@ -29,8 +29,7 @@ class test : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
         runBlocking {
             launch {
-                val file = assetManager.open("Syllabus.csv")
-                doAll(filepath)
+                doAll("app/src/main/assets/syllabus.csv")
                 val listItems: Array<String> = setItem(syllabuslist)
                 val adapter = ArrayAdapter(applicationContext, simple_list_item_1, listItems)
                 listView.adapter = adapter
@@ -43,12 +42,13 @@ class test : AppCompatActivity() {
 
     var syllabuslist: Array<Syllabus> = emptyArray()
 
-    suspend fun doAll(file: File): Unit = coroutineScope{
+    suspend fun doAll(file: String): Unit = coroutineScope{
         val doing = async{readCSV(file)}
     }
 
-     suspend fun readCSV(file: File){
-        val lines = file.readLines()
+     suspend fun readCSV(file: String){
+        val imput = resources.assets.open(file)
+         val lines = imput.bufferedReader().readLines()
         if(lines!=null) {
             for ((i, line) in lines.withIndex()) {
                 if (i == 0) {
