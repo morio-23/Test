@@ -4,6 +4,7 @@ import android.R.layout.simple_list_item_1
 import android.content.res.AssetManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -29,7 +30,7 @@ class test : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
         runBlocking {
             launch {
-                doAll("app/src/main/assets/syllabus.csv")
+                doAll("syllabus.csv")
                 val listItems: Array<String> = setItem(syllabuslist)
                 val adapter = ArrayAdapter(applicationContext, simple_list_item_1, listItems)
                 listView.adapter = adapter
@@ -54,13 +55,16 @@ class test : AppCompatActivity() {
                 if (i == 0) {
                     column = line.split(",").toTypedArray()
                 } else {
-                    fecthCSV(i,line.split(",").toTypedArray())
+                    Log.println(Log.ASSERT,"TAG", line)
+                    val split = line.split(",").toMutableList()
+                    Log.println(Log.ASSERT, "TAG", split[1])
+                    fecthCSV(i,split)
                 }
             }
         }
     }
 
-    suspend fun fecthCSV(i: Int, line: Array<String>){
+    suspend fun fecthCSV(i: Int, line: List<String>){
         val syllabusdata = Syllabus(
             primaryKey = i,
             classname = line[0],
