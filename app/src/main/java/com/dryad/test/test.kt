@@ -1,20 +1,15 @@
 package com.dryad.test
 
 import android.R.layout.simple_list_item_1
-import android.content.res.AssetManager
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.ProgressBar
-import com.dryad.test.R.id.progressBar
 import kotlinx.android.synthetic.main.activity_test.*
-import java.io.File
 import kotlinx.coroutines.*
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 class test : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +19,8 @@ class test : AppCompatActivity() {
 
         //val progressBar = ProgressBar(this)
     }
+
+    val dbHelper = SampDatabaseHelper(applicationContext,"DBSyllabus",null,1)
 
     override fun onResume() {
         super.onResume()
@@ -65,7 +62,7 @@ class test : AppCompatActivity() {
     }
 
     suspend fun fecthCSV(i: Int, line: List<String>){
-        val syllabusdata = Syllabus(
+        val syllabusData = Syllabus(
             primaryKey = i,
             classname = line[0],
             teacher = line[1],
@@ -94,7 +91,8 @@ class test : AppCompatActivity() {
             link = line[24],
             notes = line[25]
         )
-        syllabuslist += syllabusdata
+        syllabuslist += syllabusData
+        insertData(syllabusData)
 
     }
 
@@ -110,9 +108,38 @@ class test : AppCompatActivity() {
 
     }
 
-    //val dbHelper = SampDatabaseHelper(applicationContext,"DBSyllabus",null,1)
+    fun insertData(syllabus: Syllabus){
+        val cv = ContentValues()
+        cv.put(DBContract.DBSyllabus.C_classname, syllabus.classname)
+        cv.put(DBContract.DBSyllabus.C_teacher, syllabus.teacher)
+        cv.put(DBContract.DBSyllabus.C_classcategory, syllabus.classcategory)
+        cv.put(DBContract.DBSyllabus.C_classtype, syllabus.classtype)
+        cv.put(DBContract.DBSyllabus.C_coc, syllabus.coc)
+        cv.put(DBContract.DBSyllabus.C_period, syllabus.period)
+        cv.put(DBContract.DBSyllabus.C_faculty, syllabus.faculty)
+        cv.put(DBContract.DBSyllabus.C_classregicode, syllabus.classregicode)
+        cv.put(DBContract.DBSyllabus.C_grade, syllabus.grade)
+        cv.put(DBContract.DBSyllabus.C_classnumcode, syllabus.classnumcode)
+        cv.put(DBContract.DBSyllabus.C_credit, syllabus.credit)
+        cv.put(DBContract.DBSyllabus.C_latestupdate, syllabus.latestupdate)
+        cv.put(DBContract.DBSyllabus.C_officehours, syllabus.officehours)
+        cv.put(DBContract.DBSyllabus.C_rtadvice, syllabus.rtadvice)
+        cv.put(DBContract.DBSyllabus.C_objective, syllabus.objective)
+        cv.put(DBContract.DBSyllabus.C_edugoals, syllabus.edugoals)
+        cv.put(DBContract.DBSyllabus.C_goals, syllabus.goals)
+        cv.put(DBContract.DBSyllabus.C_schedule, syllabus.schedule)
+        cv.put(DBContract.DBSyllabus.C_keywords, syllabus.keywords)
+        cv.put(DBContract.DBSyllabus.C_notice, syllabus.notice)
+        cv.put(DBContract.DBSyllabus.C_evaluation, syllabus.evaluation)
+        cv.put(DBContract.DBSyllabus.C_textbooks, syllabus.textbooks)
+        cv.put(DBContract.DBSyllabus.C_related, syllabus.related)
+        cv.put(DBContract.DBSyllabus.C_link, syllabus.link)
+        cv.put(DBContract.DBSyllabus.C_notes, syllabus.notes)
 
-    //val database = dbHelper.writableDatabase
+        dbHelper.insert(cv)
+
+    }
+
 
 
 }
