@@ -2,6 +2,7 @@ package com.dryad.test
 
 import android.R.layout.simple_list_item_1
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,11 +12,12 @@ import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_test.*
 import kotlinx.coroutines.*
 
+
 class test : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
-        val listView: ListView = findViewById(R.id.listView)
+        setContentView(com.dryad.test.R.layout.activity_test)
+        val listView: ListView = findViewById(com.dryad.test.R.id.listView)
 
         //val progressBar = ProgressBar(this)
     }
@@ -110,6 +112,7 @@ class test : AppCompatActivity() {
 
     fun insertData(syllabus: Syllabus){
         val cv = ContentValues()
+        cv.put(DBContract.DBSyllabus.PRIMARYKEY, syllabus.primaryKey)
         cv.put(DBContract.DBSyllabus.C_classname, syllabus.classname)
         cv.put(DBContract.DBSyllabus.C_teacher, syllabus.teacher)
         cv.put(DBContract.DBSyllabus.C_classcategory, syllabus.classcategory)
@@ -139,6 +142,12 @@ class test : AppCompatActivity() {
         val db = dbHelper.writableDatabase
         db.insert(DBContract.DBSyllabus.TABLE_NAME, null, cv)
 
+    }
+
+    fun onTappedSearch(view: View){
+        val intent = Intent(this, ViewData::class.java)
+        intent.putExtra("SEND_DATA", edit_text3.text.toString())
+        startActivities(arrayOf(intent))
     }
 
     override fun onDestroy() {

@@ -4,6 +4,8 @@
     <string name="view">時間割を見る</string>
     <string name="list">授業一覧</string>
     <string name="picture">画像</string>>
+    <string name="input_title">000000</string>
+    <string name="search">検索</string>
 
     /*時間割登録フォーム*/
     <string name="formname_subjectcode">時間割コード</string>

@@ -10,6 +10,7 @@ private constructor() {
     object DBSyllabus : BaseColumns {
         // BaseColumns インターフェースを実装することで、内部クラスは_IDを継承できる
         const val TABLE_NAME = "Syllabus_tbl"
+        const val PRIMARYKEY = "PRIMARYKEY"
         const val C_classname = "classname"
         const val C_teacher = "teacher"
         const val C_classcategory = "classcategory"
