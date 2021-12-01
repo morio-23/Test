@@ -136,8 +136,19 @@ class test : AppCompatActivity() {
         cv.put(DBContract.DBSyllabus.C_link, syllabus.link)
         cv.put(DBContract.DBSyllabus.C_notes, syllabus.notes)
 
-        dbHelper.insert(cv)
+        val db = dbHelper.writableDatabase
+        db.insert(DBContract.DBSyllabus.TABLE_NAME, null, cv)
 
+    }
+
+    override fun onDestroy() {
+
+        // DatabaseHelperオブジェクトの解放
+        // SQLiteOpenHelper.close(): Databaseオブジェクトの解放
+        dbHelper.close()
+
+        // アクティビティの終了
+        super.onDestroy()
     }
 
 

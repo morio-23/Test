@@ -1,6 +1,5 @@
 package com.dryad.test
 
-import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -63,10 +62,6 @@ public class SampDatabaseHelper
     override fun onUpgrade(db: SQLiteDatabase, oldV: Int, newV: Int) {
         db.execSQL("DROP TABLE IF EXISTS " + DBSyllabus.TABLE_NAME)
         onCreate(db)
-    }
-
-    fun insert(values: ContentValues){
-        db.insert(DBSyllabus.TABLE_NAME, null, values)
     }
 
 }
