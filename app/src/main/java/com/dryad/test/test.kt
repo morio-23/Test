@@ -65,7 +65,6 @@ class test : AppCompatActivity() {
 
     suspend fun fecthCSV(i: Int, line: List<String>){
         val syllabusData = Syllabus(
-            primaryKey = i,
             classname = line[0],
             teacher = line[1],
             classcategory = line[2],
@@ -112,7 +111,6 @@ class test : AppCompatActivity() {
 
     fun insertData(syllabus: Syllabus){
         val cv = ContentValues()
-        cv.put(DBContract.DBSyllabus.PRIMARYKEY, syllabus.primaryKey)
         cv.put(DBContract.DBSyllabus.C_classname, syllabus.classname)
         cv.put(DBContract.DBSyllabus.C_teacher, syllabus.teacher)
         cv.put(DBContract.DBSyllabus.C_classcategory, syllabus.classcategory)

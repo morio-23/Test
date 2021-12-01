@@ -3,11 +3,15 @@ package com.dryad.test
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_test.*
-import android.widget.ArrayAdapter as ArrayAdapter
 
 class ViewData : AppCompatActivity() {
+
+    lateinit var mCustomAdapter: CustomAdapter
+    lateinit var mSyllabusList: ArrayList<Syllabus>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_data)
@@ -35,7 +39,6 @@ class ViewData : AppCompatActivity() {
             arrayOf(getdata)
         )
         val syllabusData = Syllabus(
-            primaryKey = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.PRIMARYKEY)),
             classname = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classnumcode)),
             teacher = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_teacher)),
             classcategory = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classcategory)),
@@ -64,11 +67,16 @@ class ViewData : AppCompatActivity() {
             notes = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_notes))
         )
 
+        mSyllabusList = arrayListOf(syllabusData)
+        val listView = findViewById<ListView>(R.id.listView)
+
         // adapterを作成します
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, syllabusData)
+        mCustomAdapter = CustomAdapter(
+            this, mSyllabusList
+        )
 
         // adapterをlistViewに紐付けます。
-        listView.adapter = adapter
+        listView.adapter = mCustomAdapter
 
 
     }

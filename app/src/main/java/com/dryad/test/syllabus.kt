@@ -1,7 +1,6 @@
 package com.dryad.test
 
 data class Syllabus(
-    var primaryKey: String =null,
     var classname: String? = null,
     var teacher: String? = null,
     var classcategory: String? = null,
