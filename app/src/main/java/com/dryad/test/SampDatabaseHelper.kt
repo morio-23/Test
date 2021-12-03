@@ -46,7 +46,7 @@ public class SampDatabaseHelper
                     DBSyllabus.C_textbooks + " TEXT default '', " +
                     DBSyllabus.C_related + " TEXT default '', " +
                     DBSyllabus.C_link + " TEXT default '', " +
-                    DBSyllabus.C_notes + " TEXT default '', )"
+                    DBSyllabus.C_notes + " TEXT default '')"
         )
 
         // トリガーを作成

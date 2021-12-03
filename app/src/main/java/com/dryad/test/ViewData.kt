@@ -8,20 +8,27 @@ import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_test.*
 
 class ViewData : AppCompatActivity() {
-
-    lateinit var mCustomAdapter: CustomAdapter
-    lateinit var mSyllabusList: ArrayList<Syllabus>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("kokomadekitayo")
         setContentView(R.layout.activity_view_data)
         val intent = intent
         getdata = intent.getStringExtra("SEND_DATA").toString()
         val listView = ListView(this)
         setContentView(listView)
+        println("kokomadekitayo")
     }
 
+    lateinit var mCustomAdapter: CustomAdapter
+    lateinit var mSyllabusList: ArrayList<Syllabus>
+
     var getdata = ""
+
+    override fun onStart() {
+        super.onStart()
+
+        onShow()
+    }
 
     override fun onResume() {
         super.onResume()
@@ -38,6 +45,9 @@ class ViewData : AppCompatActivity() {
             "SELECT * FROM " + DBContract.DBSyllabus.TABLE_NAME + " WHERE " + DBContract.DBSyllabus.C_classnumcode + "= ?",
             arrayOf(getdata)
         )
+
+        cursor.moveToFirst()
+
         val syllabusData = Syllabus(
             classname = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classnumcode)),
             teacher = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_teacher)),

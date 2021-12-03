@@ -3,6 +3,7 @@ package com.dryad.test
 import android.R.layout.simple_list_item_1
 import android.content.ContentValues
 import android.content.Intent
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,7 @@ class test : AppCompatActivity() {
         //val progressBar = ProgressBar(this)
     }
 
-    val dbHelper = SampDatabaseHelper(applicationContext,"DBSyllabus",null,1)
+    val dbHelper = SampDatabaseHelper(this,"DBSyllabus",null,1)
 
     override fun onResume() {
         super.onResume()
