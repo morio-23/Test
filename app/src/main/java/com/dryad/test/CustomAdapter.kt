@@ -18,10 +18,7 @@ class CustomAdapter(context: Context, var mSyllabusList: List<Syllabus>) : Array
         val syllabus = mSyllabusList[position]
 
         // レイアウトの設定
-        var view = convertView
-        if (convertView == null) {
-            view = layoutInflater.inflate(R.layout.list_item, parent, false)
-        }
+        val view = layoutInflater.inflate(R.layout.list_item, parent, false)
 
         // 各Viewの設定
         val classname = view?.findViewById<TextView>(R.id.classname)

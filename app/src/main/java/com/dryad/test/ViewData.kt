@@ -46,10 +46,16 @@ class ViewData : AppCompatActivity() {
             arrayOf(getdata)
         )
 
-        cursor.moveToFirst()
+        println(cursor.columnCount)
+
+        cursor.moveToPosition(1)
+        println(cursor.getColumnIndex(DBContract.DBSyllabus.C_classname))
+        println(cursor.columnNames)
+        println(cursor.getString(2))
+
 
         val syllabusData = Syllabus(
-            classname = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classnumcode)),
+            classname = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classname)),
             teacher = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_teacher)),
             classcategory = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classcategory)),
             classtype = cursor.getString(cursor.getColumnIndex(DBContract.DBSyllabus.C_classtype)),
@@ -79,7 +85,7 @@ class ViewData : AppCompatActivity() {
 
         mSyllabusList = arrayListOf(syllabusData)
         val listView = findViewById<ListView>(R.id.listView)
-
+        println(mSyllabusList)
         // adapterを作成します
         mCustomAdapter = CustomAdapter(
             this, mSyllabusList

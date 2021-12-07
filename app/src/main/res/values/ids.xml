@@ -7,4 +7,31 @@
     <item name="text7" type="id" />
     <item name="listView" type="id"/>
     <item name="edit_text3" type="id"/>
+
+    <item name="classname" type="id"/>
+    <item name="teacher" type="id"/>
+    <item name="classcategory" type="id"/>
+    <item name="classtype" type="id"/>
+    <item name="coc" type="id" />
+    <item name="period" type="id"/>
+    <item name="faculty" type="id"/>
+    <item name="classregicode" type="id"/>
+    <item name="grade" type="id"/>
+    <item name="classnumcode" type="id"/>
+    <item name="credit" type="id"/>
+    <item name="latestupdate" type="id" />
+    <item name="officehours" type="id"/>
+    <item name="rtadvice" type="id"/>
+    <item name="objective" type="id"/>
+    <item name="edugoals" type="id"/>
+    <item name="goals" type="id"/>
+    <item name="schedule" type="id" />
+    <item name="studyoutside" type="id"/>
+    <item name="keywords" type="id"/>
+    <item name="notice" type="id"/>
+    <item name="evaluation" type="id"/>
+    <item name="textbooks" type="id"/>
+    <item name="related" type="id" />
+    <item name="link" type="id"/>
+    <item name="notes" type="id"/>
 </resources>
