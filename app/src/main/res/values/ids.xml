@@ -6,6 +6,7 @@
     <item name="text6" type="id"/>
     <item name="text7" type="id" />
     <item name="listView" type="id"/>
+    <item name="listView_syllabus" type="id"/>
     <item name="edit_text3" type="id"/>
 
     <item name="classname" type="id"/>
@@ -34,4 +35,5 @@
     <item name="related" type="id" />
     <item name="link" type="id"/>
     <item name="notes" type="id"/>
+
 </resources>

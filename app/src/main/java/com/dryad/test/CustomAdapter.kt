@@ -14,12 +14,16 @@ class CustomAdapter(context: Context, var mSyllabusList: List<Syllabus>) : Array
     private val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        println("getView")
         // syllabusの取得
         val syllabus = mSyllabusList[position]
+        println("シラバス："+syllabus)
 
         // レイアウトの設定
-        val view = layoutInflater.inflate(R.layout.list_item, parent, false)
-
+        val view = convertView
+        if(convertView ==null) {
+            val view = layoutInflater.inflate(R.layout.list_item, parent, false)
+        }
         // 各Viewの設定
         val classname = view?.findViewById<TextView>(R.id.classname)
         classname?.text = syllabus.classname

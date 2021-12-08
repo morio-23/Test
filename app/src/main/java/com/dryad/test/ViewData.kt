@@ -42,15 +42,18 @@ class ViewData : AppCompatActivity() {
         val db = dbHelper.readableDatabase
 
         val cursor = db.rawQuery(
-            "SELECT * FROM " + DBContract.DBSyllabus.TABLE_NAME + " WHERE " + DBContract.DBSyllabus.C_classnumcode + "= ?",
+            "SELECT * FROM " + DBContract.DBSyllabus.TABLE_NAME + " WHERE " + DBContract.DBSyllabus.C_classregicode + "= ?",
             arrayOf(getdata)
         )
 
         println(cursor.columnCount)
-
-        cursor.moveToPosition(1)
+        println(cursor.position)
+        if(!cursor.moveToFirst()){
+            println("moveToFirst="+ cursor.moveToFirst() +"：データがないよ")
+        }
+        println("moveToFirst="+ cursor.moveToFirst())
+        println(cursor.position)
         println(cursor.getColumnIndex(DBContract.DBSyllabus.C_classname))
-        println(cursor.columnNames)
         println(cursor.getString(2))
 
 
@@ -84,16 +87,19 @@ class ViewData : AppCompatActivity() {
         )
 
         mSyllabusList = arrayListOf(syllabusData)
-        val listView = findViewById<ListView>(R.id.listView)
+        val listView = findViewById<ListView>(R.id.listView_syllabus)
         println(mSyllabusList)
         // adapterを作成します
         mCustomAdapter = CustomAdapter(
             this, mSyllabusList
         )
 
+        println(mCustomAdapter)
+
         // adapterをlistViewに紐付けます。
         listView.adapter = mCustomAdapter
 
+        cursor.close()
 
     }
 
